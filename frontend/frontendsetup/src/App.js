@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import './App.css';
-import { Layout, Header, Navigation, Content } from 'react-mdl';
-import Main from './components/main';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import "./App.css";
+import { Layout, Header, Navigation, Content } from "react-mdl";
+import Main from "./components/main";
+import { Link } from "react-router-dom";
 
 class App extends Component {
   render() {
     return (
       <div className="demo-big-content">
         <Layout>
-          <Header title="Resource Share" scroll>
+          <Header title={<Link to="/">Resource Share</Link>} scroll>
             <Navigation>
               <Link to="/SharePage">SharePage</Link>
               <Link to="/ViewProfile">ViewProfile</Link>
@@ -19,7 +19,7 @@ class App extends Component {
           </Header>
           <Content>
             <div className="page-content" />
-            <Main/>
+            <Main />
           </Content>
         </Layout>
       </div>
@@ -28,3 +28,4 @@ class App extends Component {
 }
 
 export default App;
+
