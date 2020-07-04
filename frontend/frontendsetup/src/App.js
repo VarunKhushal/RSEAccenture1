@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import "./App.css";
-import { Layout, Header, Navigation, Content } from "react-mdl";
-import Main from "./components/main";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import './App.css';
+import { Layout, Header, Navigation, Content } from 'react-mdl';
+import Main from './components/main';
+import { Link } from 'react-router-dom';
 
 class App extends Component {
   render() {
@@ -28,4 +28,3 @@ class App extends Component {
 }
 
 export default App;
-

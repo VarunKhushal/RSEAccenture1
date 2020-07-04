@@ -15,6 +15,6 @@ const Main = () => (
     <Route path="/LogInAcc" component={LogInAcc} />
     <Route path="/ViewProfile" component={ViewProfile} />
   </Switch>
-)
+);
 
 export default Main;
