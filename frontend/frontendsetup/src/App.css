@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+.mdl-layout-title a {
+  color: white;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.mdl-layout-title a:hover {
+  text-decoration: underline;
+}
+
+.mdl-navigation a {
+  font-size: 16px;
+}
+
+.mdl-navigation a:hover {
+  text-decoration: underline;
+}

@@ -5,13 +5,14 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'react-mdl/extra/material.css';
 import 'react-mdl/extra/material.js';
-import {BrowserRouter} from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
   <BrowserRouter>
     <App />
-  </BrowserRouter>
-  , document.getElementById('root'));
+  </BrowserRouter>,
+  document.getElementById('root')
+);
 //registerServiceWorker();
 
 // If you want your app to work offline and load faster, you can change
