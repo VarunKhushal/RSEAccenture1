@@ -34,8 +34,6 @@ def lambda_handler(event, context):
                         'body': json.dumps('Bad Request. \'page\' must be an integer.')
                         }
 
-                product_name = event['product_name'] if 'product_name' in event else ''
-
         # If the user doesn't provide a product_name, just search for everything
         if 'product_name' in event:
             query = {
