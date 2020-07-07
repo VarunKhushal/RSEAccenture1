@@ -139,11 +139,14 @@ export class Projects extends Component {
       )
     } else if(this.state.activeTab === 1) {
       return (
-        <div><h1>Accenture plc, is an Irish-domiciled multinational professional services company. A Fortune Global 500 company, it has been incorporated in Dublin, Ireland since 1 September 2009. </h1></div>
+        <div><p>Accenture plc, is an Irish-domiciled multinational professional services company. 
+          A Fortune Global 500 company, it has been incorporated in 
+          Dublin, Ireland since 1 September 2009. </p></div>
       )
     } else if(this.state.activeTab === 0) {
       return (
-        <div><h1>We innovate to find ways to put individuals at the center of what we do and use our expertise to build an inclusive future where everyone can thrive.</h1></div>
+        <div><p>We innovate to find ways to put individuals at the center of what we do and 
+          use our expertise to build an inclusive future where everyone can thrive.</p></div>
       )
     }
   }
