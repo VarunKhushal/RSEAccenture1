@@ -43,3 +43,14 @@ See:
 - [This to see dependencies and a basic example](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-request-signing.html#es-request-signing-python)
 - [This for API and query sample code](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/search-example.html)
 - [This to prepare the venv and dependencies to push to AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/python-package.html#python-package-venv)
+
+### docker-compose.yml
+I wrote a simple docker-compose.yml file to start up a local instance of Elasticsearch and Kibana easily. Feel free to use this to test the lambda functions.
+
+### Other things that could be considered:
+- Accounts (username, password, profile)
+- Location
+- Auto-complete
+- Top hits / in demand stuff
+- Suggestions to sell items?
+- List of things they have and list of things they want
