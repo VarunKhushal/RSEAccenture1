@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Layout, Header, Navigation, Switch, Route, Grid, Cell, Tabs, Tab, Card, CardTitle, CardText, CardActions, Button, CardMenu, IconButton} from 'react-mdl';
 
 
+
 import Share from './SharePage';
 import Profile from './ViewProfile';
 
@@ -33,6 +34,7 @@ class landing extends Component {
         <br />
         <br />
         <Projects />
+        <App />
       </div>
     );
   }
@@ -70,7 +72,7 @@ export class Projects extends Component {
 
   toggleCategories() {
 
-    if(this.state.activeTab === 2){
+    if(this.state.activeTab === 0){
       return(
         <div>
           {/* toiletpaper 
@@ -137,32 +139,19 @@ export class Projects extends Component {
           </Card>
         </div>
       )
-    } else if(this.state.activeTab === 1) {
-      return (
-        <div><p>Accenture plc, is an Irish-domiciled multinational professional services company. 
-          A Fortune Global 500 company, it has been incorporated in 
-          Dublin, Ireland since 1 September 2009. </p></div>
-      )
-    } else if(this.state.activeTab === 0) {
-      return (
-        <div><p>We innovate to find ways to put individuals at the center of what we do and 
-          use our expertise to build an inclusive future where everyone can thrive.</p></div>
-      )
-    }
+    } 
   }
 
     render() {
       return(
         <div className="category-tabs">
-          test
+          <h1>Welcome to our share page!</h1>
           <Tabs activeTab={this.state.activeTab} onChange={(tabId) => {
             this.setState({ activeTab: tabId });
             console.log(tabId);
            }} ripple>
             
             <Tab>Home</Tab>
-            <Tab>Profile</Tab>
-            <Tab>Items</Tab>
           </Tabs>
 
           {this.toggleCategories()}
@@ -175,3 +164,57 @@ export class Projects extends Component {
 
 
 }
+
+const items = [
+  {
+    name: 'Toilet Paper',
+  },
+  {
+    name: 'Rice',
+  },
+  {
+    name:'Pet Food'
+  },
+];
+
+export class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = { search: '' };
+  }
+
+  render() {
+    return (
+      <div>
+      
+      <br />
+      <br />
+      <br />
+        <input
+            type="text"
+            value={this.state.search}
+            onChange={(e) => {
+              this.setState({
+                ...this.state,
+                search: e.target.value
+              });
+            }
+          }
+          />
+        {
+        items.filter(item => item.name.toLowerCase().includes(this.state.search.toLowerCase())).map(filteredItem => (
+          <div key={filteredItem.name} >
+            {filteredItem.name}
+          </div>
+        ))
+        }
+      
+      
+      <br />
+      <br />
+      
+      </div>
+    );
+  }
+}
+
