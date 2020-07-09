@@ -23,12 +23,13 @@ class landing extends Component {
     return (
       <div className="search">
         <Layout>
-          <Header title="Accenture" scroll>
+          <Header title="A platform for you and me" scroll>
             <Navigation>
-              <a href="/">Share NOW</a>
+              <a href="/">Share now</a>
+              <a href='/'>Search</a>    
               
             </Navigation>
-              <a href='/'>Search</a>          
+                    
           </Header>
         </Layout>
         <br />
@@ -145,7 +146,7 @@ export class Projects extends Component {
     render() {
       return(
         <div className="category-tabs">
-          <h1>Welcome to our share page!</h1>
+          <h5>Welcome to our share page!</h5>
           <Tabs activeTab={this.state.activeTab} onChange={(tabId) => {
             this.setState({ activeTab: tabId });
             console.log(tabId);

@@ -9,12 +9,12 @@ class App extends Component {
     return (
       <div className="demo-big-content">
         <Layout>
-          <Header title={<Link to="/">Resource Share</Link>} scroll>
+          <Header title={<Link to="/">Releaf</Link>} scroll>
             <Navigation>
-              <Link to="/SharePage">SharePage</Link>
-              <Link to="/ViewProfile">ViewProfile</Link>
-              <Link to="/LogInAcc">LogInAcc</Link>
-              <Link to="/CreateAccount">CreateAccount</Link>
+              <Link to="/SharePage">Share</Link>
+              <Link to="/ViewProfile">Profile</Link>
+              <Link to="/LogInAcc">Log in</Link>
+              <Link to="/CreateAccount">Create Account</Link>
             </Navigation>
           </Header>
           <Content>

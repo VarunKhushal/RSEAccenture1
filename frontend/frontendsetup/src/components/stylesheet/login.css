@@ -81,7 +81,7 @@ h2.active {
 
 /* FORM TYPOGRAPHY*/
 
-.myform input[type=button], .myform input[type=submit], .myform input[type=reset]  {
+.myform input[type=button], .myform button[type=submit], .myform input[type=reset]  {
   background-color: #56baed;
   border: none;
   color: white;
@@ -103,11 +103,11 @@ h2.active {
   transition: all 0.3s ease-in-out;
 }
 
-.myform input[type=button]:hover, .myform input[type=submit]:hover, .myform input[type=reset]:hover  {
+.myform input[type=button]:hover, .myform button[type=submit]:hover, .myform input[type=reset]:hover  {
   background-color: #39ace7;
 }
 
-.myform input[type=button]:active, .myform input[type=submit]:active, .myform input[type=reset]:active  {
+.myform input[type=button]:active, .myform button[type=submit]:active, .myform input[type=reset]:active  {
   -moz-transform: scale(0.95);
   -webkit-transform: scale(0.95);
   -o-transform: scale(0.95);

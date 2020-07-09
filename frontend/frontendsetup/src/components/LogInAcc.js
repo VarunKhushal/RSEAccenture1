@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom'
 
 
 import './stylesheet/login.css'
@@ -32,13 +33,17 @@ class LogInAcc extends Component {
   }
 
   
-  handleLogIn = () => {
+  
+  handleLogIn = (e) => {
+    e.preventDefault();
     console.log(this);
     const user = USERS[this.state.email]; // undefined
     if (user && user.password === this.state.password) {
       console.log("success");
-    }
-    else {
+
+      this.props.history.push('/')
+      
+    } else {
       console.log("incorrect email or password");
       this.setState({
         ...this.state,
@@ -49,6 +54,7 @@ class LogInAcc extends Component {
   
   render() {
     let errorComponent = null;
+    
     if (this.state.error !== '') {
       errorComponent = (
         <div>{this.state.error}</div>
@@ -60,7 +66,7 @@ class LogInAcc extends Component {
       <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/> 
       <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <div class="wrapper fadeInDown">
+      <div className="wrapper fadeInDown">
         <div id="formContent">
 
           
@@ -69,13 +75,13 @@ class LogInAcc extends Component {
               <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
           </div> */}
 
-          <form class="myform">
-            <input type="text" id="login" class="fadeIn second" name="login" placeholder="login" 
+          <form className="myform">
+            <input type="text" id="login" className="fadeIn second" name="login" placeholder="login" 
                         onChange={(e) => this.setState({
                           ...this.state,
                         email: e.target.value
                           })}/> 
-            <input type="password" id="password" class="fadeIn third" name="login" placeholder="password"
+            <input type="password" id="password" className="fadeIn third" name="login" placeholder="password"
                         onChange={(e) => this.setState({
                           ...this.state,
                           password: e.target.value
@@ -84,9 +90,9 @@ class LogInAcc extends Component {
             <br></br>
             <br></br>
             {/* <input type="submit" class="fadeIn fourth" value="Log In"/> */}
-            <Link to = "/">
-                <button class="fadeIn fourth" value="Log In" onClick={this.handleLogIn}>Log In </button>
-            </Link>
+            
+            <button type="submit" className="fadeIn fourth" value="Log In" onClick={this.handleLogIn}> Log In </button>
+            
             <br></br>
             
             <div id ="remember">
@@ -97,13 +103,12 @@ class LogInAcc extends Component {
 	
           </form>
           <br/>            
-       <br/>
-        {errorComponent}
+          <br/>
+            {errorComponent}
 
           <div id="formFooter">
-      
             Don't have an account<br></br>
-            <a class="underlineHover" href="/CreateAccount">Register Now</a>
+            <a className="underlineHover" href="/CreateAccount">Register Now</a>
           </div>
 
           
