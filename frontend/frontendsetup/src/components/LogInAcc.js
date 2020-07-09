@@ -1,43 +1,61 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+
 import './stylesheet/login.css'
 
-class LogInAcc extends Component {
-  constructor(props){
-  super(props);
-  this.state={
-  email:'',
-  password:''
-  }
- }
+const USERS = {
+  "ts@gmail.com": {
+    email: "ts@gmail.com",
+    password: "123"
+  },
+  
+  "jd@gmail.com": {
+    email: "jd@gmail.com",
+    password: "123"  
+  },
+  
+  "po@gmail.com": {
+    email: "po@gmail.com",
+    password: "123"  
+  },
+}
 
-render() {
+class LogInAcc extends Component {
+  constructor(props) {
+   super(props);
+  	this.state = {
+     	email: '',
+      password: '',
+      error: ''
+    }
+  }
+
+  
+  handleLogIn = () => {
+    console.log(this);
+    const user = USERS[this.state.email]; // undefined
+    if (user && user.password === this.state.password) {
+      console.log("success");
+    }
+    else {
+      console.log("incorrect email or password");
+      this.setState({
+        ...this.state,
+        error: 'Incorrect email or password.'
+      });
+    }
+  }
+  
+  render() {
+    let errorComponent = null;
+    if (this.state.error !== '') {
+      errorComponent = (
+        <div>{this.state.error}</div>
+      );
+    }
+    
     return (
-      // <div id = "comps">
-      //   <p></p>
-      //   <p></p>
-      //   <p></p>
-      //       Email address
-      //      <input
-      //        placeholder="Email"
-      //        onChange = {(event,newValue) => this.setState({email:newValue})}
-      //        />
-      //      <br/>
-      //      <br/>
-      //         Password
-      //        <input
-      //          placeholder="Password"
-      //          type = "password"
-      //          onChange = {(event,newValue) => this.setState({password:newValue})}
-      //          />
-      //        <br/>             
-      //        <br/>
-      //        <button>Log In </button>
-      //        <br/>            
-      //       <br/>
-      //        Don't have Account <Link to="/CreateAccount">Register Now</Link>
-      // </div>
       <>
       <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/> 
       <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -53,13 +71,22 @@ render() {
 
           <form class="myform">
             <input type="text" id="login" class="fadeIn second" name="login" placeholder="login" 
-                        onChange = {(event,newValue) => this.setState({email:newValue})}/> 
+                        onChange={(e) => this.setState({
+                          ...this.state,
+                        email: e.target.value
+                          })}/> 
             <input type="password" id="password" class="fadeIn third" name="login" placeholder="password"
-                        onChange = {(event,newValue) => this.setState({password:newValue})}/>
+                        onChange={(e) => this.setState({
+                          ...this.state,
+                          password: e.target.value
+                          })}/>
             <a href="#">Forgot your password?</a>
             <br></br>
             <br></br>
-            <input type="submit" class="fadeIn fourth" value="Log In"/>
+            {/* <input type="submit" class="fadeIn fourth" value="Log In"/> */}
+            <Link to = "/">
+                <button class="fadeIn fourth" value="Log In" onClick={this.handleLogIn}>Log In </button>
+            </Link>
             <br></br>
             
             <div id ="remember">
@@ -69,6 +96,9 @@ render() {
 					
 	
           </form>
+          <br/>            
+       <br/>
+        {errorComponent}
 
           <div id="formFooter">
       
@@ -78,11 +108,12 @@ render() {
 
           
         </div>
+
       </div>
       </>
     
     );
   }
-}
+} 
 
 export default LogInAcc;
