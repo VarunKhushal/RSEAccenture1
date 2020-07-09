@@ -127,7 +127,7 @@ class CreateAccount extends Component {
                           onChange={(event, newValue) => this.setState({ email: newValue })}/>
 			    			</div>
 
-			    			<div class="row">
+			    			<div class="row form-one">
 			    				<div class="col-xs-6 col-sm-6 col-md-6">
 			    					<div class="form-group">
 			    						<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password"/>

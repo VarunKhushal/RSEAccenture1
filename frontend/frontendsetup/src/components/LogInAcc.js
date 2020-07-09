@@ -51,7 +51,7 @@ render() {
               <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
           </div> */}
 
-          <form>
+          <form class="myform">
             <input type="text" id="login" class="fadeIn second" name="login" placeholder="login" 
                         onChange = {(event,newValue) => this.setState({email:newValue})}/> 
             <input type="password" id="password" class="fadeIn third" name="login" placeholder="password"
