@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {  Header, Navigation, Switch, Route, Grid, Cell, Tabs, Tab, Card, CardTitle, CardText, CardActions, Button, CardMenu, IconButton} from 'react-mdl';
 import AutoCompleteText from './AutoCompleteText';
 import {Redirect} from 'react-router';
+import { Link } from 'react-router-dom';
 
 import Share from './SharePage';
 import Profile from './ViewProfile';
@@ -98,7 +99,7 @@ export class Projects extends Component {
             <CardActions border>
               
               <Button colored> SHARE </Button>
-              <Button colored onClick={this.onGet}> GET IT NOW</Button>
+              <Link to="/GetItNow">GET IT NOW </Link>
             </CardActions>
             
             <CardMenu style={{color: '#fff'}}>
@@ -118,7 +119,7 @@ export class Projects extends Component {
           <CardActions border>
             
             <Button colored> SHARE </Button>
-            <Button colored onClick={this.onGet}> GET IT NOW </Button>
+            <Link to="/GetItNow">GET IT NOW </Link>
           </CardActions>
 
           <CardMenu style={{color: '#fff'}}>
@@ -139,7 +140,8 @@ export class Projects extends Component {
           <CardActions border>
             
             <Button colored> SHARE </Button>
-            <Button colored onClick={this.onGet}> GET IT NOW </Button>
+            <Link to="/GetItNow">GET IT NOW </Link>
+
             {/* <Link to="/GetItNow">test</Link> */}
           </CardActions>
             
@@ -162,8 +164,6 @@ export class Projects extends Component {
             
             <Tab>Home</Tab>
           </Tabs>
-
-          <Button colored onClick={this.onGet}> GET IT NOW</Button>
 
           {this.toggleCategories()}
           <Grid className="projects-grid">
