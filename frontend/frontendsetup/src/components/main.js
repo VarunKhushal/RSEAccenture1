@@ -6,6 +6,7 @@ import CreateAccount from './CreateAccount';
 import LandingPage from './landingpage';
 import LogInAcc from './LogInAcc';
 import ViewProfile from './ViewProfile';
+import getItNow from './getItNow';
 
 const Main = () => (
   <Switch>
@@ -14,6 +15,7 @@ const Main = () => (
     <Route path="/CreateAccount" component={CreateAccount} />
     <Route path="/LogInAcc" component={LogInAcc} />
     <Route path="/ViewProfile" component={ViewProfile} />
+    <Route path="/GetItNow" component={getItNow} />
   </Switch>
 );
 

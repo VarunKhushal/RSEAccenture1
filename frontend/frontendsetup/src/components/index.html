@@ -1,76 +1,44 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="style.css" />
-        <title> Get it now</title>
-    </head>
-    <body>
-        <div class="grid-container">
-            <header class="header">
-                <div class="brand">
-                    <button onclick="openMenu()">
-                        &#9776;
-                    </button>
-                    <a href="index.html">get it now</a>
-                </div>
-                <div class="header-links">
-                    <a href="cart.html">Cart</a>
-                    <a href="signin.html">Signin</a>
-                </div>
-            </header>
-            <aside class="sidebar">
-                <h3>Shopping Categories</h3>
-                <button class="sidebar-close-button" onclick="closeMenu()">x</button>
-                <u1>
-                    <li>
-                       <a href="index.html">Toilet Paper</a> 
-                    </li>
+<html lang="en">
 
-                    <li>
-                        <a href="index.html">Pet Food</a>
-                    </li>
-                    <li>
-                        <a href="index.html">Rice</a>
-                    </li>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico?v=2">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-                </u1>
-                
-            </aside>
-            <main class="main">
-                <div class="cotent">
-                <ul class="products">
-                    <li>
-                        <div class="product">
-                            <img class="image" src="https://cdn.shopify.com/s/files/1/0012/8440/7394/products/kleenex-small-roll-toilet-tissue-kleenex-12818116640866_450x450.jpg?v=1580212623" alt="product">
-                            <div class="product-name">
-                            <a href="product.html">Toilet Paper</a>
-                            <div class="product quantity">
-                                We are short of toilet paper right now!
-                                quantity:3</div>
-                            
+    <link href="https://fonts.googleapis.com/css?family=Anton|Oxygen" rel="stylesheet">
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Releaf</title>
+</head>
 
-                        </div>
-                    </li>
-                </ul>
-                </div>
-            </main>
-            <br/>
-            <br/>
-
-            <footer class="footer">
-                All rights reserved.
-            </footer>
-        </div>
-        <script>
-            function openMenu(){
-                console.log('test');
-                document.querySelector(".sidebar").classList.add('open');
-            }
-            function closeMenu(){
-                document.querySelector(".sidebar").classList.add('open');
-            }
-        </script>
-
-    </body>
+<body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+</body>
 
 </html>
