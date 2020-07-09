@@ -93,6 +93,10 @@ class LogInAcc extends Component {
             
             <button type="submit" className="fadeIn fourth" value="Log In" onClick={this.handleLogIn}> Log In </button>
             
+            <div id="error">
+              {errorComponent}
+            </div>
+
             <br></br>
             
             <div id ="remember">
@@ -102,9 +106,7 @@ class LogInAcc extends Component {
 					
 	
           </form>
-          <br/>            
-          <br/>
-            {errorComponent}
+
 
           <div id="formFooter">
             Don't have an account<br></br>

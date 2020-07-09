@@ -288,3 +288,7 @@ h2.active {
 #icon {
   width:60%;
 }
+
+#error {
+  color:red;
+}
