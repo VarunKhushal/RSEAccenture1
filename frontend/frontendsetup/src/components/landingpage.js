@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import {  Header, Navigation, Switch, Route, Grid, Cell, Tabs, Tab, Card, CardTitle, CardText, CardActions, Button, CardMenu, IconButton} from 'react-mdl';
-import AutoCompleteText from './AutoCompleteText';
-
-
+import { Layout, Header, Navigation, Switch, Route, Grid, Cell, Tabs, Tab, Card, CardTitle, CardText, CardActions, Button, CardMenu, IconButton} from 'react-mdl';
 
 
 
@@ -25,7 +22,7 @@ class landing extends Component {
   render() {
     return (
       <div className="search">
-        
+        <Layout>
           <Header title="Accenture" scroll>
             <Navigation>
               <a href="/">Share NOW</a>
@@ -33,14 +30,11 @@ class landing extends Component {
             </Navigation>
               <a href='/'>Search</a>          
           </Header>
-        
-        <App />
+        </Layout>
+        <br />
+        <br />
         <Projects />
         <App />
-
-        <HideableText text='testing 123'/>
-        <AutoCompleteText />
-        
       </div>
     );
   }
@@ -54,7 +48,7 @@ export class Landing2 extends Component {
       <div style={{width:'40%', margin:'auto'}}>
         
         Toilet peper
-        <Grid className= "projects-grid">
+        <Grid className= "landing-grid">
           <Cell col={12}></Cell>
             <img
               src="https://cdn.shopify.com/s/files/1/0012/8440/7394/products/kleenex-small-roll-toilet-tissue-kleenex-12818116640866_450x450.jpg?v=1580212623"
@@ -93,7 +87,7 @@ export class Projects extends Component {
             </CardText>
             
             <CardActions border>
-              
+              <Button colored> Description </Button>
               <Button colored> SHARE </Button>
               <Button colored> GET IT NOW</Button>
             </CardActions>
@@ -113,7 +107,7 @@ export class Projects extends Component {
         </CardText>
 
           <CardActions border>
-            
+            <Button colored> Description </Button>
             <Button colored> SHARE </Button>
             <Button colored> GET IT NOW </Button>
           </CardActions>
@@ -134,7 +128,7 @@ export class Projects extends Component {
           </CardText>
             
           <CardActions border>
-            
+            <Button colored> Description </Button>
             <Button colored> SHARE </Button>
             <Button colored> GET IT NOW </Button>
           </CardActions>
@@ -151,6 +145,7 @@ export class Projects extends Component {
     render() {
       return(
         <div className="category-tabs">
+          <h1>Welcome to our share page!</h1>
           <Tabs activeTab={this.state.activeTab} onChange={(tabId) => {
             this.setState({ activeTab: tabId });
             console.log(tabId);
@@ -160,9 +155,6 @@ export class Projects extends Component {
           </Tabs>
 
           {this.toggleCategories()}
-          <Grid className="projects-grid">
-
-          </Grid>
         </div>
 
       )
@@ -224,32 +216,5 @@ export class App extends Component {
       </div>
     );
   }
-}
-
-
-export class HideableText extends React.Component {
-    constructor (props) {
-        super(props);
-        this.state = {
-            isHidden: false,
-        }
-    }
-
-    toggleIsHidden() {
-        this.setState((currentState) => ({
-            isHidden: !currentState.isHidden,
-        }));
-    }
-
-    render() {
-        return (
-            <div>
-                <button onClick={() => this.toggleIsHidden()}>Toggle</button>
-                {!this.state.isHidden && this.props.text}
-            </div>
-        );
-    }
-
-
 }
 
