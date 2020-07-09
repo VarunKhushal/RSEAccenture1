@@ -5,6 +5,7 @@ import AutoCompleteText from './AutoCompleteText';
 
 
 
+
 import Share from './SharePage';
 import Profile from './ViewProfile';
 
@@ -36,6 +37,7 @@ class landing extends Component {
         <App />
         <Projects />
         <App />
+
         <HideableText text='testing 123'/>
         <AutoCompleteText />
         
@@ -149,7 +151,6 @@ export class Projects extends Component {
     render() {
       return(
         <div className="category-tabs">
-          
           <Tabs activeTab={this.state.activeTab} onChange={(tabId) => {
             this.setState({ activeTab: tabId });
             console.log(tabId);
@@ -225,6 +226,7 @@ export class App extends Component {
   }
 }
 
+
 export class HideableText extends React.Component {
     constructor (props) {
         super(props);
@@ -250,3 +252,4 @@ export class HideableText extends React.Component {
 
 
 }
+
