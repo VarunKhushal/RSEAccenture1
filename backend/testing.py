@@ -4,7 +4,7 @@ import json
 
 print(datetime.now().isoformat())
 
-RESET = False
+RESET = True
 
 url = 'http://search-slp-es-database-7docgoiohso2wq5yypuwhvsuwq.us-east-2.es.amazonaws.com/'
 # url = url + 'kibana_sample_data_ecommerce/' 
@@ -110,12 +110,12 @@ if RESET == True:
         print()
 
 # For seeding in more data to see pages
-    for i in range(15):
-        payload = payloads[2]
-        payload['quantity'] = i
-        r = requests.post(url + 'product/_doc', json=payload)
-        print(r.text)
-        print()
+#    for i in range(15):
+#        payload = payloads[2]
+#        payload['quantity'] = i
+#        r = requests.post(url + 'product/_doc', json=payload)
+#        print(r.text)
+#        print()
 
 
 
