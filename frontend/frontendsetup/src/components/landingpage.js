@@ -17,6 +17,8 @@ import {
   CardMenu,
   IconButton,
 } from 'react-mdl';
+import Swal from 'sweetalert2';
+import RingLoader from 'react-spinners/RingLoader';
 
 import Share from './SharePage';
 import Profile from './ViewProfile';
@@ -46,14 +48,22 @@ class landing extends Component {
   }
 
   componentDidMount() {
+    this.loadData();
+  }
+
+  loadData = () => {
+    this.setState({
+      ...this.state,
+      data: [],
+    });
     fetch(process.env.REACT_APP_API_ENDPOINT + 'product', {})
       .then((res) => {
         console.log('data updated');
         return res.json();
       })
       .then((data) => {
-        console.log(data);
-        console.log(JSON.stringify(data));
+        // console.log(data);
+        // console.log(JSON.stringify(data));
         this.setState({
           ...this.state,
           data,
@@ -62,7 +72,11 @@ class landing extends Component {
       .catch((e) => {
         console.log(e);
       });
-  }
+  };
+
+  refreshData = () => {
+    this.loadData();
+  };
 
   render() {
     return (
@@ -70,10 +84,14 @@ class landing extends Component {
         <Layout>
           <h2 className="title">Welcome to our share page!</h2>
           <div className="main-box">
-            {this.state.data.length === 0 ? <div>Loading...</div> : null}
+            <RingLoader
+              color={'rgb(63, 181, 155)'}
+              loading={this.state.data.length === 0}
+              size={50}
+            />
 
             {this.state.data.map((data, i) => (
-              <ProductCard data={data} key={i} />
+              <ProductCard data={data} key={i} refreshData={this.refreshData} />
             ))}
           </div>
         </Layout>
@@ -89,21 +107,105 @@ class ProductCard extends Component {
     super(props);
   }
 
+  claimProductEvent = (e) => {
+    console.log(this.props.data._id);
+
+    const data = this.props.data;
+
+    const title = !data.claimed
+      ? 'Do you really need to claim this?'
+      : 'Unclaim this?';
+
+    const text = !data.claimed
+      ? 'Please think about others and your needs before claiming items.'
+      : "If you don't need this anymore, please unclaim and share the item with others :).";
+
+    const icon = !data.claimed ? 'warning' : 'info';
+
+    const buttons = !data.claimed
+      ? { confirmButtonText: 'Claim!' }
+      : { confirmButtonText: 'Unclaim!' };
+
+    Swal.fire({
+      title,
+      text,
+      icon,
+      showCancelButton: true,
+      ...buttons,
+      reverseButtons: true,
+      showLoaderOnConfirm: true,
+      preConfirm: () => {
+        return this.claimProduct();
+      },
+    })
+      .then((res) => {
+        console.log(res);
+        console.log(res.value.status);
+        if (res.value.status === 200) {
+          Swal.fire('Success!', '', 'success');
+          setTimeout(() => {
+            this.props.refreshData();
+          }, 1000);
+        } else {
+          Swal.fire(
+            'Oops!',
+            `Something went wrong... Error code ${res.value.status}.`,
+            'warning'
+          );
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // Will claim or unclaim depending on the current state of the item.
+  // Returns a promise
+  claimProduct = () => {
+    console.log(this.props.data._id);
+    return fetch(process.env.REACT_APP_API_ENDPOINT + 'product/claim', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: this.props.data._id,
+        claim: this.props.data.claimed ? false : true,
+      }),
+    });
+  };
+
   render() {
     return (
       <Card shadow={0} className="product_card">
         <CardTitle
+          className="imageBox"
           style={{
             height: '250px',
             background: `url(${this.props.data.image_link}) center / cover`,
           }}
-        ></CardTitle>
+        >
+          {this.props.data.claimed ? (
+            <div className="claim">Claimed</div>
+          ) : null}
+        </CardTitle>
         <CardText>
           <h4 className="cardTitle">{this.props.data.product_name}</h4>
           {this.props.data.description}
+          <br />
+          <br />
+          <span style={{ fontStyle: 'italic' }}>
+            {this.props.data.quantity} {this.props.data.units} remaining.
+          </span>
         </CardText>
         <CardActions border>
-          <Button colored>Request!</Button>
+          <Button colored onClick={this.claimProductEvent}>
+            {this.props.data.claimed ? (
+              <span>Unclaim</span>
+            ) : (
+              <span>Request!</span>
+            )}
+          </Button>
         </CardActions>
       </Card>
     );

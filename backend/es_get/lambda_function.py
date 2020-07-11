@@ -11,8 +11,12 @@ Inputs:
     product_name: string (optional)
     page: integer (optional)
 '''
+# Function to include the ID and extract docs
+def getData(x):
+    obj = x['_source']
+    obj['_id'] = x['_id']
+    return obj
 
-# Get products
 def lambda_handler(event, context):
     try:
         # Set up some credentials for AWS
@@ -61,7 +65,7 @@ def lambda_handler(event, context):
 
         # Gather the data
         data = json.loads(r.text)
-        hits = list(map(lambda x: x['_source'], data['hits']['hits']))
+        hits = list(map(getData, data['hits']['hits']))
         print(hits)
 
 

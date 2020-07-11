@@ -66,6 +66,7 @@
   width: 75%;
   margin: 0 auto;
   flex-wrap: wrap;
+  align-items: flex-end;
   justify-content: center;
 }
 
@@ -86,5 +87,22 @@
   color: black;
   /* font-weight: 400; */
   text-decoration: underline;
+}
+
+.claim {
+  display: inline-block;
+  color: black;
+  background-color: red;
+  font-weight: bold;
+  font-size: 25px;
+  width: 400px;
+  height: 40px;
+  line-height: 40px;
+  position: absolute;
+  right: 0%;
+  top: 0%;
+  transform: translate(50%, 50%) rotate(45deg) translate(-07%, 150%);
+  opacity: 1;
+  text-align: center;
 }
 
