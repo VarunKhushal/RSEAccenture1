@@ -28,8 +28,23 @@ Inputs:
 ```
 Simply post with the following parameters and it will create an entry. The date will be automatically added. Ensure the image_link url is the actual image url.
 
+### es_claim
+```
+Inputs:
+  id: string
+  claim: boolean
+```
+Provide the ID of a product as well as the claim action as a boolean to claim or unclaim the product.
+
 ## Notes
 ### AWS Lambda push script
+
+============ UPDATE ============
+
+We managed to set up AWS layers that include the dependencies, so the following is no longer necessary. However the following instructions explain how the .zip file was created and uploaded as a layer to AWS. 
+
+================================
+
 As these lambda functions require external libraries, a virtual environment was set up and dependencies installed. Then, the dependencies were zipped into a zip file.
 
 The push script requires **AWS-CLI**. It will zip the lambda_function.py file into the zip file and then push it. 
@@ -40,7 +55,7 @@ The requirements used were:
 - requests-aws4auth
 
 See:
-- [This to see dependencies and a basic example](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-request-signing.html#es-request-signing-python)
+- [This for dependencies and a basic example](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-request-signing.html#es-request-signing-python)
 - [This for API and query sample code](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/search-example.html)
 - [This to prepare the venv and dependencies to push to AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/python-package.html#python-package-venv)
 
