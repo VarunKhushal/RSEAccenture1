@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import SharePage from './SharePage';
 import CreateAccount from './CreateAccount';
-import LandingPage from './landingpage';
+import LandingPage from './LandingPage';
 import LogInAcc from './LogInAcc';
 import ViewProfile from './ViewProfile';
 
