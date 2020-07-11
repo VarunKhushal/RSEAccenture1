@@ -31,17 +31,17 @@ class ViewProfile extends Component {
                               <div className="row">
                                   <div className="centered-text col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-3 col-lg-6">
                                       <div itemscope="" itemtype="http://schema.org/Person">
-                                          <h2> <span itemprop="name">Your Name</span></h2>
+                                          <h2> <span itemprop="name">John Citizen</span></h2>
                                           <p>
-                                              <i className="fa fa-map-marker"></i> <span itemprop="addressRegion">Your City, Your State</span>
+                                              <i className="fa fa-map-marker"></i> <span itemprop="addressRegion">Nsw, 2150</span>
                                           </p>
-                                          <p itemprop="email"> <i className="fa fa-envelope"> </i> <a href="mailto:you@somedomain.com">you@somedomain.com</a> </p>
+                                          <p itemprop="email"> <i className="fa fa-envelope"> </i> <a href="mailto:you@somedomain.com">JohnCitizen@releaf.com</a> </p>
                                       </div>
                                   </div>
                               </div>
                           </div>
                           <div className="col-lg-12 centered-text">
-                              Your Short Bio goes here.
+                              I'm a generous person and I love giving. 
                           </div>
               
                       </div>
