@@ -25,7 +25,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #fdfdfd;
 }
 
 @keyframes App-logo-spin {
@@ -38,13 +38,14 @@
 }
 
 .mdl-layout-title a {
-  color: white;
+  color: rgb(255, 255, 255);
   font-weight: 400;
   text-decoration: none;
 }
 
 .mdl-layout-title a:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .mdl-navigation a {
@@ -54,3 +55,54 @@
 .mdl-navigation a:hover {
   text-decoration: underline;
 }
+
+.mdl-layout__header {
+  background-color: rgb(63, 181, 155) !important;
+}
+
+/* Victor share-page styles */
+.main-box {
+  display: flex;
+  width: 75%;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.main-box .product_card {
+  width: 26%;
+  margin: auto;
+  margin: 15px;
+}
+
+.main-box .cardTitle {
+  margin: 0;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.title {
+  margin: 20 auto;
+  color: black;
+  /* font-weight: 400; */
+  text-decoration: underline;
+}
+
+.claim {
+  display: inline-block;
+  color: black;
+  background-color: red;
+  font-weight: bold;
+  font-size: 25px;
+  width: 400px;
+  height: 40px;
+  line-height: 40px;
+  position: absolute;
+  right: 0%;
+  top: 0%;
+  transform: translate(50%, 50%) rotate(45deg) translate(-07%, 150%);
+  opacity: 1;
+  text-align: center;
+}
+

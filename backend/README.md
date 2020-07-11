@@ -54,3 +54,16 @@ I wrote a simple docker-compose.yml file to start up a local instance of Elastic
 - Top hits / in demand stuff
 - Suggestions to sell items?
 - List of things they have and list of things they want
+
+### Extra AWS stuff:
+- Chicken!
+- Architecture diagram
+- Walkthrough on how we got here - timeline of development and troubles
+- Cloud formation? Service to 
+  - infrastructure as code
+  - Template that deploys everything for me. Send to anyone, they should be able to run it. 
+  - Adding more resources is just as easy as changing a config. 
+- AWS simple notification service
+  - SNS - send out emails or text messages - claiming an item - confirmation email! 
+- AWS Cloud watch? 
+  - Monitoring?

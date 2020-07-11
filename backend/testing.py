@@ -3,8 +3,9 @@ from datetime import datetime
 import json
 
 print(datetime.now().isoformat())
+print()
 
-RESET = False
+RESET = True
 
 url = 'http://search-slp-es-database-7docgoiohso2wq5yypuwhvsuwq.us-east-2.es.amazonaws.com/'
 # url = url + 'kibana_sample_data_ecommerce/' 
@@ -22,7 +23,8 @@ payload = {
                 "description": { "type": "text" },
                 "quantity": { "type": "integer" },
                 "units": { "type": "text", "fielddata": True },
-                "date_created": { "type": "date" }
+                "date_created": { "type": "date" },
+                "claimed": { "type": "boolean" }
                 }
             }
         }
@@ -38,12 +40,12 @@ payload = {
         "sort": [
             { "date_created": "desc"}
             ],
-        "from": 10
+        "from": 0
         }
 
 r = requests.get(url + 'product/_search', json=payload)
 # print(r.text)
-data = json.loads(r.text)
+# data = json.loads(r.text)
 # print(data)
 # print()
 # print(data['hits'])
@@ -52,12 +54,17 @@ data = json.loads(r.text)
 # print()
 # print(data['hits']['hits'][0]['_source'])
 # print()
-
-# Grab out the relevant parts
-stuff = list(map(lambda x: x['_source'], data['hits']['hits']))
-print(stuff)
-print()
-print(r.status_code)
+# 
+# def getData(x):
+#     temp = x['_source']
+#     temp['_id'] = x['_id']
+#     return temp
+# 
+# # Grab out the relevant parts
+# stuff = list(map(getData, data['hits']['hits']))
+# print(stuff)
+# print()
+# print(r.status_code)
 
 # Search with keyword for title
 payload = {
@@ -72,8 +79,8 @@ payload = {
         }
 
 r = requests.get(url + 'product/_search', json=payload)
-print(r.text)
-print()
+# print(r.text)
+# print()
 
 
 # Seed in some data
@@ -84,7 +91,8 @@ payloads = [
             "description": "Soft, triple ply, what else could you ask for?",
             "quantity": 36,
             "units": "rolls",
-            "date_created": datetime.fromisoformat('2020-06-01T04:58:36.507109').isoformat()
+            "date_created": datetime.fromisoformat('2020-06-01T04:58:36.507109').isoformat(),
+            "claimed": False
             },
         {
             "product_name": "Instant Ramen",
@@ -92,7 +100,8 @@ payloads = [
             "description": "Mi goreng at its best.",
             "quantity": 1,
             "units": "pack",
-            "date_created": datetime.fromisoformat('2020-07-05').isoformat()
+            "date_created": datetime.fromisoformat('2020-07-05').isoformat(),
+            "claimed": False
             },
         {
             "product_name": "Colgate Toothpaste",
@@ -100,7 +109,8 @@ payloads = [
             "description": "No idea how many doctors out of 10 recommend this...",
             "quantity": 12,
             "units": "tubes",
-            "date_created": datetime.fromisoformat('2020-03-20').isoformat()
+            "date_created": datetime.fromisoformat('2020-03-20').isoformat(),
+            "claimed": False
             },
         ]
 if RESET == True:  
@@ -110,12 +120,38 @@ if RESET == True:
         print()
 
 # For seeding in more data to see pages
-    for i in range(15):
-        payload = payloads[2]
-        payload['quantity'] = i
-        r = requests.post(url + 'product/_doc', json=payload)
-        print(r.text)
-        print()
+#    for i in range(15):
+#        payload = payloads[2]
+#        payload['quantity'] = i
+#        r = requests.post(url + 'product/_doc', json=payload)
+#        print(r.text)
+#        print()
+
+
+id = 'OWnHPHMBUxb2apcRGKD7'
+# Get a document
+r = requests.get(url + 'product/_doc/{}'.format(id))
+print(r.text)
+print()
+data = json.loads(r.text)
+print(data['_source'])
+print()
+
+# Updating a document
+
+payload = {
+        "doc": {
+            "quantity": 123456789
+            }
+        }
+
+
+r = requests.post(url + 'product/_update/{}'.format(id), json=payload)
+print(r.text)
+print()
+
+
+
 
 
 
