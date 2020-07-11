@@ -1,133 +1,126 @@
-import React, { Component } from 'react';
-import { Tabs, Tab, Textfield, Button, DataTable, TableHeader, Switch, Grid, Cell} from 'react-mdl';
+import React, { Component, useState } from 'react';
+import { useFormik } from 'formik';
+import Swal from 'sweetalert2';
+import { Redirect } from 'react-router';
 
 class SharePage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {activeTab: 0}
-  }
-
-  toggleCategories() {
-    if(this.state.activeTab === 0){
-      return(
-        <form onSubmit={this.handleSubmit} className="inputForm">
-          <br></br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <Textfield
-              onChange={() => {}}
-              label="Name of Item..."
-              floatingLabel
-              style={{width: '300px'}}
-          />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <Textfield
-              onChange={() => {}}
-              label="Enter Description"
-              floatingLabel
-              style={{width: '400px'}}
-          />
-          <br></br>
-          <br></br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <Textfield
-              onChange={() => {}}
-              pattern="-?[0-9]*(\.[0-9]+)?"
-              error="Input is not a number!"
-              label="Quantity"
-              style={{width: '300px'}}
-          />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <Textfield
-              onChange={() => {}}
-              label="Insert Image..."
-              floatingLabel
-              style={{width: '400px'}}
-          />
-          <br></br>
-          <br></br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <DataTable
-              selectable
-              shadow={0}
-              rowKeyColumn="id"
-              rows={[
-                  {id: 1001, Category: 'Health and Beauty'},
-                  {id: 1002, Category: 'Clothing'},
-                  {id: 1003, Category: 'Food Supplies'},
-                  {id: 1004, Category: 'Pet Supplies'},
-                  {id: 1005, Category: 'Electronics'},
-                  {id: 1006, Category: 'Entertainment'},
-                  {id: 1007, Category: 'Baby Needs'}
-              ]}
-          >
-              <TableHeader name="Category" tooltip="The category name">Category</TableHeader>
-          </DataTable>
-          <br></br>
-          <br></br>
-          <Switch ripple id="switch1" defaultChecked>Exchanging Item?</Switch>
-          <br></br>
-          <br></br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <Button raised accent ripple>Submit</Button>
-          <br></br>
-          <br></br>
-        </form>
-      )
-    } else if (this.state.activeTab === 1) {
-      return (
-        <form onSubmit={this.handleSubmit} className="inputForm">
-          <br></br>
-            <div style={{width: '80%', margin: 'auto'}}>
-              <Grid className="demo-grid-ruler">
-                  <Cell col={1}>1</Cell>
-                  <Cell col={1}>1</Cell>
-                  <Cell col={1}>1</Cell>
-                  <Cell col={1}>1</Cell>
-                  <Cell col={1}>1</Cell>
-                  <Cell col={1}>1</Cell>
-                  <Cell col={1}>1</Cell>
-                  <Cell col={1}>1</Cell>
-                  <Cell col={1}>1</Cell>
-                  <Cell col={1}>1</Cell>
-                  <Cell col={1}>1</Cell>
-                  <Cell col={1}>1</Cell>
-              </Grid>
-              <Grid className="demo-grid-1">
-                  <Cell col={4}>4</Cell>
-                  <Cell col={4}>4</Cell>
-                  <Cell col={4}>4</Cell>
-              </Grid>
-              <Grid className="demo-grid-2">
-                  <Cell col={6}>6</Cell>
-                  <Cell col={4}>4</Cell>
-                  <Cell col={2}>2</Cell>
-              </Grid>
-              <Grid className="demo-grid-3">
-                  <Cell col={6} tablet={8}>6 (8 tablet)</Cell>
-                  <Cell col={4} tablet={6}>4 (6 tablet)</Cell>
-                  <Cell col={2} phone={4}>2 (4 phone)</Cell>
-              </Grid>
-            </div>
-          <Button raised accent ripple>Exchange</Button>
-        </form>
-      )
-    }
-  }
-  
   render() {
     return (
-      <div className="category-tabs">
-        <Tabs activeTab={this.state.activeTab} onChange={(tabId) => this.setState({ activeTab: tabId})} ripple>
-          <Tab>Donate</Tab>
-          <Tab>Exchange</Tab>
-        </Tabs>
-
-        <section className="projects-grid">
-          {this.toggleCategories()}
-        </section>
+      <div className="">
+        <SignupForm />
       </div>
     );
   }
 }
 
 export default SharePage;
+
+const SignupForm = () => {
+  const [redirect, setRedirect] = useState(false);
+
+  const formik = useFormik({
+    initialValues: {
+      productName: '',
+      description: '',
+      imageLink: '',
+      quantity: '',
+      units: '',
+    },
+    onSubmit: (values) => {
+      console.log(values);
+
+      Swal.fire({
+        title: 'Sending...',
+      });
+      Swal.showLoading();
+
+      fetch(process.env.REACT_APP_API_ENDPOINT + 'product', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...values,
+          product_name: values.productName,
+          image_link: values.imageLink,
+        }),
+      }).then(async (res) => {
+        const text = await res.json();
+        console.log(res);
+
+        if (res.status === 201) {
+          Swal.fire({
+            title: 'Done!',
+            icon: 'success',
+          }).then(() => {
+            setRedirect(true);
+          });
+        } else {
+          Swal.fire({
+            title: 'Oops...',
+            text: `Something went wrong. Error code: ${res.status}. Message: ${text}`,
+            icon: 'error',
+          });
+        }
+      });
+    },
+  });
+
+  return redirect === true ? (
+    <Redirect to="/" />
+  ) : (
+    <form className="form-style-7" onSubmit={formik.handleSubmit}>
+      <h3>Make a donation!</h3>
+      <ul>
+        <li>
+          <label htmlFor="productName">Product name</label>
+          <input
+            type="text"
+            name="productName"
+            onChange={formik.handleChange}
+            value={formik.values.productName}
+          />
+        </li>
+        <li>
+          <label htmlFor="description">Description</label>
+          <input
+            type="text"
+            name="description"
+            onChange={formik.handleChange}
+            value={formik.values.description}
+          />
+        </li>
+        <li>
+          <label htmlFor="imageLink">Image link</label>
+          <input
+            type="text"
+            name="imageLink"
+            onChange={formik.handleChange}
+            value={formik.values.imageLink}
+          />
+        </li>
+        <li>
+          <label htmlFor="quantity">Quantity</label>
+          <input
+            type="text"
+            name="quantity"
+            onChange={formik.handleChange}
+            value={formik.values.quantity}
+          />
+        </li>
+        <li>
+          <label htmlFor="units">Units</label>
+          <input
+            type="text"
+            name="units"
+            onChange={formik.handleChange}
+            value={formik.values.product_name}
+          />
+        </li>
+        <li>
+          <input type="submit" value="Submit!" />
+        </li>
+      </ul>
+    </form>
+  );
+};
