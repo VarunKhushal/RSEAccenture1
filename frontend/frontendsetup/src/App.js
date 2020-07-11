@@ -14,7 +14,6 @@ class App extends Component {
               <Link to="/SharePage">Share</Link>
               <Link to="/ViewProfile">Profile</Link>
               <Link to="/LogInAcc">Log in</Link>
-              <Link to="/CreateAccount">Create Account</Link>
             </Navigation>
           </Header>
           <Content>
