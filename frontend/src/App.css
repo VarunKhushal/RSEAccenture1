@@ -61,6 +61,10 @@
 }
 
 /* Victor share-page styles */
+.title {
+  text-align: center;
+}
+
 .main-box {
   display: flex;
   width: 75%;
