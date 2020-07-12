@@ -4,6 +4,18 @@ import { Link } from 'react-router-dom';
 import './stylesheet/create.css'
 
 class CreateAccount extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			first_name: '',
+			last_name: '',
+			email: '',
+			state: '',
+			postcode: '',
+			password: '',
+		};
+	  }
+
   //create textfields to allow the user to enter in their details 
   render() {
     return (
