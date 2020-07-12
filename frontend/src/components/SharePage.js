@@ -2,13 +2,88 @@ import React, { Component, useState } from 'react';
 import { useFormik } from 'formik';
 import Swal from 'sweetalert2';
 import { Redirect } from 'react-router';
+import ImageUploader from 'react-images-upload';
+// import axios from 'axios';
+import S3FileUpload from 'react-s3';
+// import { aws } from '../keys';
+
+const config = {
+  bucketName: 'rse-testbucket',
+  region: 'us-east-2',
+  accessKeyId: 'AKIASEM26ZRLRZN32XPN',
+  secretAccessKey: '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',
+}
 
 class SharePage extends Component {
+
+  // constructor(props) {
+  //   super(props);
+  //    this.state = { pictures: [] };
+  //    this.onDrop = this.onDrop.bind(this);
+  //    this.upload = this.upload.bind(this);
+  // }
+  
+  // onDrop(picture) {
+  //   this.setState({
+  //       pictures: this.state.pictures.concat(picture),
+  //   });
+  // };
+
+  // uploadImages() {
+  //   console.log(this.state.pictures);
+  //   let uploadPromises = this.state.pictures.map (image => {
+  //     let data = new FormData();
+  //     data.append('image', image, image.name);
+      
+  // })
+
+  //   axios.all(uploadPromises)
+  //     .then(results => {
+  //       console.log(results);
+  //     })
+  //     .cat(e => {
+  //       console.log(e);
+  //     })
+  // }
+
+  // constructor() {
+  //   super();
+  // }
+  
+  // upload(e) {
+  //   console.log(e.target.files[0]);
+  //   S3FileUpload.uploadFile(e.target.files[0], config)
+  //   .then(data => {
+  //     console.log(data);
+
+  //   })
+  //   .catch( err => {
+  //     console.log(err);;
+  //   })
+  // }
+
+
   render() {
     return (
       <div className="">
         <SignupForm />
+
+        {/* <ImageUploader
+                withIcon={true}
+                withPreview={true}
+                buttonText='Upload images'
+                onChange={this.onDrop}
+                imgExtension={['.jpg', '.png', '.gif']}
+                maxFileSize={5242880}
+                singleImage={true}
+                
+          /> */}
+          {/* <input type="file"
+          onChange={this.upload}/> */}
+
+          {/* <button onClick={this.upload}> Upload Images</button> */}
       </div>
+         
     );
   }
 }
@@ -17,6 +92,21 @@ export default SharePage;
 
 const SignupForm = () => {
   const [redirect, setRedirect] = useState(false);
+
+  const upload = (e) => {
+    console.log(e.target.files[0]);
+    S3FileUpload.uploadFile(e.target.files[0], config)
+    .then(data => {
+      console.log(data);
+      formik.values.imageLink = data.location;
+      console.log(data.location);
+      console.log(formik.values.imageLink );
+      formik.handleChange();
+    })
+    .catch( err => {
+      console.log(err);;
+    })
+  }
 
   const formik = useFormik({
     initialValues: {
@@ -90,7 +180,7 @@ const SignupForm = () => {
             value={formik.values.description}
           />
         </li>
-        <li>
+        {/* <li>
           <label htmlFor="imageLink">Image link</label>
           <input
             type="text"
@@ -98,6 +188,15 @@ const SignupForm = () => {
             onChange={formik.handleChange}
             value={formik.values.imageLink}
           />
+        </li> */}
+        <li>
+        <label htmlFor="imageLink">Upload Image</label>
+          <input type="file"
+           name="imageLink"
+           onChange={upload}
+          //  value={formik.values.imageLink}
+           />
+
         </li>
         <li>
           <label htmlFor="quantity">Quantity</label>
