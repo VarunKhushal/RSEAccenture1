@@ -12,7 +12,7 @@ class CreateAccount extends Component {
 			email: '',
 			state: '',
 			postcode: '',
-			password: '',
+			pw: '',
 		};
 	  }
 
@@ -36,36 +36,31 @@ class CreateAccount extends Component {
 			    			<div className="row">
 			    				<div className="col-xs-6 col-sm-6 col-md-6">
 			    					<div className="form-group">
-                      <input name="first_name" id="first_name" className="form-control input-sm" placeholder="First Name" 
-                          onChange={(e) => this.first_name(e.target.value)} />
+                      <input name="first_name" id="first_name" className="form-control input-sm" placeholder="First Name"/>
 			    					</div>
 			    				</div>
 			    				<div className="col-xs-6 col-sm-6 col-md-6">
 			    					<div className="form-group">
-                      <input name="last_name" id="last_name" className="form-control input-sm" placeholder="Last Name" 
-                          onChange={(e) => this.last_name(e.target.value)}/>
+                      <input name="last_name" id="last_name" className="form-control input-sm" placeholder="Last Name"/>
 			    					</div>
 			    				</div>
 			    			</div>
 
 			    			<div className="form-group">
-                  <input type="email" name="email" id="email" className="form-control input-sm" placeholder="Email Address" 
-                          onChange={(e) => this.email(e.target.value)}/>
+                  <input type="email" name="email" id="email" className="form-control input-sm" placeholder="Email Address"/>
 			    			</div>
 
 
                 <div className="form-group">
 			    					<div className="form-group">
-                      <input className="form-control input-sm"  placeholder="Select your State" 
-                         onChange={(e) => this.state(e.target.value)}/>
+                      <input className="form-control input-sm"  placeholder="Select your State" />
 			    					</div>
 			    			</div>
 
 
                 <div className="form-group">
 			    					<div className="form-group">
-                    <input className="form-control input-sm"  placeholder="Enter your Postocde" 
-                          onChange={(e) => this.postcode(e.target.value)}/>
+                    <input className="form-control input-sm"  placeholder="Enter your Postocde" />
 			    					</div>
 			    			</div>     
 
@@ -73,8 +68,7 @@ class CreateAccount extends Component {
 			    			<div className="row">
 			    				<div className="col-xs-6 col-sm-6 col-md-6">
 			    					<div className="form-group">
-			    						<input type="password" name="password" id="password" className="form-control input-sm" placeholder="Password"
-                         onChange={(e) => this.password(e.target.value)}/>
+			    						<input type="password" name="password" id="password" className="form-control input-sm" placeholder="Password"/>
 			    					</div>
 			    				</div>
 			    			{/* <div class="col-xs-6 col-sm-6 col-md-6">
