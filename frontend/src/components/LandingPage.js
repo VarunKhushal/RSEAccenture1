@@ -160,6 +160,10 @@ class ProductCard extends Component {
           <h4 className="cardTitle">{this.props.data.product_name}</h4>
           {this.props.data.description}
           <br />
+          <span style={{ fontStyle: 'italic' }}>
+            {/* @ {this.props.data.postcode} */} 
+            Currently available @POSTCODE
+          </span>
           <br />
           <span style={{ fontStyle: 'italic' }}>
             {this.props.data.quantity} {this.props.data.units} remaining.
