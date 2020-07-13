@@ -112,6 +112,24 @@ payloads = [
             "date_created": datetime.fromisoformat('2020-03-20').isoformat(),
             "claimed": False
             },
+        {
+            "product_name": "Chicken",
+            "image_link": "https://www.simplyrecipes.com/wp-content/uploads/2019/03/HT-Make-Roast-Chicken-LEAD-5v2.jpg",
+            "description": "They taste gooooood",
+            "quantity": 1,
+            "units": "full chicken",
+            "date_created": datetime.fromisoformat('2020-03-20').isoformat(),
+            "claimed": False
+            },
+        {
+            "product_name": "Not Too Fresh Coffee Beans",
+            "image_link": "https://i1.wp.com/personalbarista.com/wp-content/uploads/2018/08/Roasted-coffee-beansimage-from-torange_biz-free-photobank.jpg?fit=800%2C600",
+            "description": "Great for owls",
+            "quantity": 50,
+            "units": "kg",
+            "date_created": datetime.fromisoformat('2020-03-20').isoformat(),
+            "claimed": False
+            },
         ]
 if RESET == True:  
     for payload in payloads:
