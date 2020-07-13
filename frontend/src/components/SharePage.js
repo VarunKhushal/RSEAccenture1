@@ -51,6 +51,7 @@ const SignupForm = () => {
       imageLink: '',
       quantity: '',
       units: '',
+      postcode: '',
     },
     onSubmit: (values) => {
       console.log(values);
@@ -132,7 +133,6 @@ const SignupForm = () => {
             type="file"
             name="imageLink"
             onChange={upload}
-            //  value={formik.values.imageLink}
           />
           
         </li>
@@ -151,7 +151,16 @@ const SignupForm = () => {
             type="text"
             name="units"
             onChange={formik.handleChange}
-            value={formik.values.product_name}
+            value={formik.values.units}
+          />
+        </li>
+        <li>
+          <label htmlFor="postcode">Postcode</label>
+          <input
+            type="text"
+            name="postcode"
+            onChange={formik.handleChange}
+            value={formik.values.Postcode}
           />
         </li>
         <li>

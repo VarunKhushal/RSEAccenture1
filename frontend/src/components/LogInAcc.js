@@ -5,18 +5,8 @@ import { Redirect } from 'react-router-dom';
 import './stylesheet/login.css';
 
 const USERS = {
-  'ts@gmail.com': {
-    email: 'ts@gmail.com',
-    password: '123',
-  },
-
-  'jd@gmail.com': {
-    email: 'jd@gmail.com',
-    password: '123',
-  },
-
-  'po@gmail.com': {
-    email: 'po@gmail.com',
+  'jc@releaf.com': {
+    email: 'jc@releaf.com',
     password: '123',
   },
 };

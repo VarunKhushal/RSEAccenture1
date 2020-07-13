@@ -164,8 +164,8 @@ class ProductCard extends Component {
           {this.props.data.description}
           <br />
           <span style={{ fontStyle: 'italic' }}>
-            {/* @ {this.props.data.postcode} */} 
-            Currently available @POSTCODE
+            Currently available @{this.props.data.postcode} 
+            {/* Currently available @POSTCODE */}
           </span>
           <br />
           <span style={{ fontStyle: 'italic' }}>

@@ -80,7 +80,8 @@ class CreateAccount extends Component {
 
                 
 
-                <input type="submit" id= "register" value="Register" className="btn btn-info btn-block"/>
+                		{/* <input type="submit" id= "register" value="Register" className="btn btn-info btn-block"/> */}
+							<Link className="btn btn-info btn-block" to="/LogInAcc">Submit</Link>
 			    			
 			    			
 			    		</form>

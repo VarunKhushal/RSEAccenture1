@@ -35,7 +35,7 @@ class ViewProfile extends Component {
                                           <p>
                                               <i className="fa fa-map-marker"></i> <span itemprop="addressRegion">Nsw, 2150</span>
                                           </p>
-                                          <p itemprop="email"> <i className="fa fa-envelope"> </i> <a href="mailto:you@somedomain.com">JohnCitizen@releaf.com</a> </p>
+                                          <p itemprop="email"> <i className="fa fa-envelope"> </i> <a href="mailto:you@somedomain.com">jc@releaf.com</a> </p>
                                       </div>
                                   </div>
                               </div>
