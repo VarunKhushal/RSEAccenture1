@@ -128,14 +128,14 @@ if RESET == True:
 #        print()
 
 
-id = 'OWnHPHMBUxb2apcRGKD7'
-# Get a document
-r = requests.get(url + 'product/_doc/{}'.format(id))
-print(r.text)
-print()
-data = json.loads(r.text)
-print(data['_source'])
-print()
+# id = 'OWnHPHMBUxb2apcRGKD7'
+# # Get a document
+# r = requests.get(url + 'product/_doc/{}'.format(id))
+# print(r.text)
+# print()
+# data = json.loads(r.text)
+# print(data['_source'])
+# print()
 
 # Updating a document
 

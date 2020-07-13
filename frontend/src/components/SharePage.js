@@ -12,17 +12,16 @@ const config = {
   region: 'us-east-2',
   accessKeyId: 'AKIASEM26ZRLRZN32XPN',
   secretAccessKey: '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',
-}
+};
 
 class SharePage extends Component {
-
   // constructor(props) {
   //   super(props);
   //    this.state = { pictures: [] };
   //    this.onDrop = this.onDrop.bind(this);
   //    this.upload = this.upload.bind(this);
   // }
-  
+
   // onDrop(picture) {
   //   this.setState({
   //       pictures: this.state.pictures.concat(picture),
@@ -34,7 +33,7 @@ class SharePage extends Component {
   //   let uploadPromises = this.state.pictures.map (image => {
   //     let data = new FormData();
   //     data.append('image', image, image.name);
-      
+
   // })
 
   //   axios.all(uploadPromises)
@@ -49,7 +48,7 @@ class SharePage extends Component {
   // constructor() {
   //   super();
   // }
-  
+
   // upload(e) {
   //   console.log(e.target.files[0]);
   //   S3FileUpload.uploadFile(e.target.files[0], config)
@@ -61,7 +60,6 @@ class SharePage extends Component {
   //     console.log(err);;
   //   })
   // }
-
 
   render() {
     return (
@@ -78,12 +76,11 @@ class SharePage extends Component {
                 singleImage={true}
                 
           /> */}
-          {/* <input type="file"
+        {/* <input type="file"
           onChange={this.upload}/> */}
 
-          {/* <button onClick={this.upload}> Upload Images</button> */}
+        {/* <button onClick={this.upload}> Upload Images</button> */}
       </div>
-         
     );
   }
 }
@@ -96,17 +93,17 @@ const SignupForm = () => {
   const upload = (e) => {
     console.log(e.target.files[0]);
     S3FileUpload.uploadFile(e.target.files[0], config)
-    .then(data => {
-      console.log(data);
-      formik.values.imageLink = data.location;
-      console.log(data.location);
-      console.log(formik.values.imageLink );
-      formik.handleChange();
-    })
-    .catch( err => {
-      console.log(err);;
-    })
-  }
+      .then((data) => {
+        console.log(data);
+        formik.values.imageLink = data.location;
+        console.log(data.location);
+        console.log(formik.values.imageLink);
+        formik.setFieldValue('imageLink', data.location);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -190,13 +187,13 @@ const SignupForm = () => {
           />
         </li> */}
         <li>
-        <label htmlFor="imageLink">Upload Image</label>
-          <input type="file"
-           name="imageLink"
-           onChange={upload}
-          //  value={formik.values.imageLink}
-           />
-
+          <label htmlFor="imageLink">Upload Image</label>
+          <input
+            type="file"
+            name="imageLink"
+            onChange={upload}
+            //  value={formik.values.imageLink}
+          />
         </li>
         <li>
           <label htmlFor="quantity">Quantity</label>
