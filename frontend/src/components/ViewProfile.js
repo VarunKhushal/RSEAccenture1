@@ -55,21 +55,27 @@ class ViewProfile extends Component {
                             <div className="badge yellow">
                                 <div className="circle"> <i className="fa fa-bolt"></i></div>
                                 <div className="ribbon tool">Initiator
-                                    <span className="tooltiptext tooltip-top"> first to donate of the day </span>
+                                    <span className="tooltiptext tooltip-left"> First to donate of the day </span>
                                 </div>
 
                             </div>
                             <div className="badge orange">
-                              <div className="circle"> <i className="fa fa-wheelchair-alt"></i></div>
-                              <div className="ribbon">Disabler</div>
+                              <div className="circle"> <i className="fa fa-gamepad "></i></div>
+                              <div className="ribbon tool">Gamer
+                                <span className="tooltiptext tooltip-top"> Donated 15 assorted vido games</span>
+                              </div>
                             </div>
                             <div className="badge pink">
-                              <div className="circle"> <i className="fa fa-pied-piper"></i></div>
-                              <div className="ribbon">Nuker</div>
+                              <div className="circle"> <i className="fa fa-battery-full "></i></div>
+                              <div className="ribbon tool">Recharger
+                                <span className="tooltiptext tooltip-top"> Donated a packet battery </span>
+                              </div>
                             </div>
                             <div className="badge red">
-                              <div className="circle"> <i className="fa fa-shield"></i></div>
-                              <div className="ribbon">Ganker</div>
+                              <div className="circle"> <i className="fa fa-heart"></i></div>
+                              <div className="ribbon tool">Giver 
+                                <span className="tooltiptext tooltip-right"> Donated twice in one day! </span>
+                              </div>
                             </div>
                             <div className="badge purple">
                               <div className="circle"> <i className="fa fa-anchor"></i></div>

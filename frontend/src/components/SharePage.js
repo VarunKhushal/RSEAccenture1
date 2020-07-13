@@ -4,6 +4,8 @@ import Swal from 'sweetalert2';
 import { Redirect } from 'react-router';
 import S3FileUpload from 'react-s3';
 
+import './stylesheet/share.css';
+
 const config = {
   bucketName: 'rse-testbucket',
   region: 'us-east-2',
@@ -126,11 +128,13 @@ const SignupForm = () => {
         <li>
           <label htmlFor="imageLink">Upload Image</label>
           <input
+            className = "imageUploadBtn"
             type="file"
             name="imageLink"
             onChange={upload}
             //  value={formik.values.imageLink}
           />
+          
         </li>
         <li>
           <label htmlFor="quantity">Quantity</label>

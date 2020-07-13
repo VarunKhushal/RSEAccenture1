@@ -8,7 +8,9 @@ import {
   Button,
 } from 'react-mdl';
 import Swal from 'sweetalert2';
-import ClimbingBoxLoader from 'react-spinners/ClimbingBoxLoader';
+import BarLoader from 'react-spinners/BarLoader';
+
+import './stylesheet/landing.css';
 
 console.log(process.env.REACT_APP_API_ENDPOINT);
 
@@ -62,10 +64,10 @@ class Landing extends Component {
         <Layout>
           <h2 className="title">Welcome to our share page!</h2>
           <div className="main-box">
-            <ClimbingBoxLoader
+            <BarLoader
               color={'rgb(63, 181, 155)'}
               loading={this.state.data.length === 0}
-              size={25}
+              size={50}
             />
 
             {this.state.data.map((data, i) => (
