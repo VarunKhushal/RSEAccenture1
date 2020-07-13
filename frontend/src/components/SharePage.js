@@ -2,7 +2,6 @@ import React, { Component, useState } from 'react';
 import { useFormik } from 'formik';
 import Swal from 'sweetalert2';
 import { Redirect } from 'react-router';
-import ImageUploader from 'react-images-upload';
 import S3FileUpload from 'react-s3';
 
 const config = {

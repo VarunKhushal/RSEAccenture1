@@ -125,9 +125,11 @@ class LogInAcc extends Component {
 
             <div id="formFooter">
               Don't have an account<br></br>
-              <a className="underlineHover" href="/CreateAccount">
+              {/* <a className="underlineHover" href="/CreateAccount">
                 Register Now
-              </a>
+              </a> */}
+
+              <Link className="underlineHover" to="/CreateAccount">Register Now</Link>
             </div>
           </div>
         </div>
