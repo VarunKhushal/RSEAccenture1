@@ -3,9 +3,7 @@ import { useFormik } from 'formik';
 import Swal from 'sweetalert2';
 import { Redirect } from 'react-router';
 import ImageUploader from 'react-images-upload';
-// import axios from 'axios';
 import S3FileUpload from 'react-s3';
-// import { aws } from '../keys';
 
 const config = {
   bucketName: 'rse-testbucket',
@@ -15,71 +13,11 @@ const config = {
 };
 
 class SharePage extends Component {
-  // constructor(props) {
-  //   super(props);
-  //    this.state = { pictures: [] };
-  //    this.onDrop = this.onDrop.bind(this);
-  //    this.upload = this.upload.bind(this);
-  // }
-
-  // onDrop(picture) {
-  //   this.setState({
-  //       pictures: this.state.pictures.concat(picture),
-  //   });
-  // };
-
-  // uploadImages() {
-  //   console.log(this.state.pictures);
-  //   let uploadPromises = this.state.pictures.map (image => {
-  //     let data = new FormData();
-  //     data.append('image', image, image.name);
-
-  // })
-
-  //   axios.all(uploadPromises)
-  //     .then(results => {
-  //       console.log(results);
-  //     })
-  //     .cat(e => {
-  //       console.log(e);
-  //     })
-  // }
-
-  // constructor() {
-  //   super();
-  // }
-
-  // upload(e) {
-  //   console.log(e.target.files[0]);
-  //   S3FileUpload.uploadFile(e.target.files[0], config)
-  //   .then(data => {
-  //     console.log(data);
-
-  //   })
-  //   .catch( err => {
-  //     console.log(err);;
-  //   })
-  // }
 
   render() {
     return (
       <div className="">
         <SignupForm />
-
-        {/* <ImageUploader
-                withIcon={true}
-                withPreview={true}
-                buttonText='Upload images'
-                onChange={this.onDrop}
-                imgExtension={['.jpg', '.png', '.gif']}
-                maxFileSize={5242880}
-                singleImage={true}
-                
-          /> */}
-        {/* <input type="file"
-          onChange={this.upload}/> */}
-
-        {/* <button onClick={this.upload}> Upload Images</button> */}
       </div>
     );
   }
