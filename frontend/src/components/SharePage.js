@@ -10,8 +10,8 @@ import S3FileUpload from 'react-s3';
 const config = {
   bucketName: 'rse-testbucket',
   region: 'us-east-2',
-  accessKeyId: 'AKIASEM26ZRLRZN32XPN',
-  secretAccessKey: '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',
+  accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
+  secretAccessKey: process.env.REACT_APP_SECRET_ACCESS,
 };
 
 class SharePage extends Component {
