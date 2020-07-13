@@ -37,6 +37,7 @@ class Landing extends Component {
     fetch(process.env.REACT_APP_API_ENDPOINT + 'product', {})
       .then((res) => {
         console.log('data updated');
+        console.log(res);
         return res.json();
       })
       .then((data) => {
