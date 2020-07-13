@@ -23,6 +23,7 @@ payload = {
                 "description": { "type": "text" },
                 "quantity": { "type": "integer" },
                 "units": { "type": "text", "fielddata": True },
+                "postcode": { "type": "integer" },
                 "date_created": { "type": "date" },
                 "claimed": { "type": "boolean" }
                 }
@@ -91,6 +92,7 @@ payloads = [
             "description": "Soft, triple ply, what else could you ask for?",
             "quantity": 36,
             "units": "rolls",
+            "postcode": 2150,
             "date_created": datetime.fromisoformat('2020-06-01T04:58:36.507109').isoformat(),
             "claimed": False
             },
@@ -100,6 +102,7 @@ payloads = [
             "description": "Mi goreng at its best.",
             "quantity": 1,
             "units": "pack",
+            "postcode": 2010,
             "date_created": datetime.fromisoformat('2020-07-05').isoformat(),
             "claimed": False
             },
@@ -109,6 +112,7 @@ payloads = [
             "description": "No idea how many doctors out of 10 recommend this...",
             "quantity": 12,
             "units": "tubes",
+            "postcode": 2020,
             "date_created": datetime.fromisoformat('2020-03-20').isoformat(),
             "claimed": False
             },
@@ -118,6 +122,7 @@ payloads = [
             "description": "They taste gooooood",
             "quantity": 1,
             "units": "full chicken",
+            "postcode": 2026,
             "date_created": datetime.fromisoformat('2020-03-20').isoformat(),
             "claimed": False
             },
@@ -127,6 +132,7 @@ payloads = [
             "description": "Great for owls",
             "quantity": 50,
             "units": "kg",
+            "postcode": 2034,
             "date_created": datetime.fromisoformat('2020-03-20').isoformat(),
             "claimed": False
             },
